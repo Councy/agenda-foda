@@ -25,7 +25,7 @@ namespace Lisinha_Matlugo
         }
         public string Telefone
         {
-            get { return Telefone; }
+            get { return telefone; }
             set
             {
                 if (value.Length == 11)
