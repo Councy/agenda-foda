@@ -36,6 +36,8 @@
             this.txtSobrenome = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
             this.lstContatos = new System.Windows.Forms.ListBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +69,7 @@
             // 
             // btnAddContato
             // 
-            this.btnAddContato.Location = new System.Drawing.Point(32, 104);
+            this.btnAddContato.Location = new System.Drawing.Point(33, 130);
             this.btnAddContato.Name = "btnAddContato";
             this.btnAddContato.Size = new System.Drawing.Size(124, 23);
             this.btnAddContato.TabIndex = 3;
@@ -99,16 +101,36 @@
             // lstContatos
             // 
             this.lstContatos.FormattingEnabled = true;
-            this.lstContatos.Location = new System.Drawing.Point(425, 12);
+            this.lstContatos.Location = new System.Drawing.Point(239, 12);
             this.lstContatos.Name = "lstContatos";
-            this.lstContatos.Size = new System.Drawing.Size(127, 264);
+            this.lstContatos.Size = new System.Drawing.Size(313, 264);
             this.lstContatos.TabIndex = 7;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(79, 95);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(100, 20);
+            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Email";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 291);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lstContatos);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtSobrenome);
@@ -134,6 +156,8 @@
         private System.Windows.Forms.TextBox txtSobrenome;
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.ListBox lstContatos;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label4;
     }
 }
 

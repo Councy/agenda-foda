@@ -20,7 +20,18 @@ namespace Lisinha_Matlugo
         private void btnAddContato_Click(object sender, EventArgs e)
         {
             // Criar nosso primeiro contato (um OBJETO da classe Contato).
-            Contato objetocontatos = new Contato();
+            Contato objetoContato = new Contato(txtNome.Text, txtSobrenome.Text, txtTelefone.Text, txtEmail.Text);
+            lstContatos.Items.Add(objetoContato.ToString());
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Lisinha_Matlugo
         private string primeiroNome;
         private string sobrenome;
         private string telefone;
+        private string email;
     
     //PROPRIEDADES (GET e SET)
     public string PrimeiroNome
@@ -39,31 +40,41 @@ namespace Lisinha_Matlugo
 
             }
         }
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
 
 
         public Contato()
         {
             PrimeiroNome = "José";
             Sobrenome = "Da Silva";
-            Telefone = "11-98506-6969";
+            Telefone = "11985066969";
+            Email = "josepintudo@gmail.com";
         }
         
-        public Contato(string primeironome, string sobrenome, string telefone)
+        public Contato(string primeironome, string sobrenome, string telefone, string email)
         { 
           PrimeiroNome = primeironome;
           Sobrenome = sobrenome;
           Telefone = telefone;
+          Email = email;
 
         }
 
         public override string ToString()
         {
             string saida = String.Empty;
-            saida += String.Format("{0}, {1}", PrimeiroNome, Sobrenome);
+            saida += String.Format("{0} {1}", PrimeiroNome, Sobrenome);
+            saida += " ";
             saida += String.Format("{0}-{1}-{2}",
-                Telefone.Substring(0, 1),
-                Telefone.Substring(2, 4),
-                Telefone.Substring(7, 3));
+                Telefone.Substring(0, 2),
+                Telefone.Substring(2, 5),
+                Telefone.Substring(7, 4));
+            saida += " ";
+            saida += String.Format("{0}", Email);
 
             return saida;
 
