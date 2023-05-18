@@ -23,13 +23,16 @@ namespace Lisinha_Matlugo
         private void btnAddContato_Click(object sender, EventArgs e)
         {
 
-         
+
             // Criar nosso primeiro contato (um OBJETO da classe Contato).
             Contato objetoContato = new Contato(txtNome.Text, txtSobrenome.Text, txtTelefone.Text, txtEmail.Text);
-            lstContatos.Items.Add(objetoContato.ToString());
+            Escrever(objetoContato);
+            Ler();
+            AtualizarDisplay();
+            LimparFormulario();
         }
 
-        private void Escrever(Contato contato) 
+        private void Escrever(Contato contato)
         {
             StreamWriter escrevedorDeArquivos = new StreamWriter("Contatos.txt");
             escrevedorDeArquivos.WriteLine(listaDeContatos.Length + 1);
@@ -38,24 +41,54 @@ namespace Lisinha_Matlugo
             escrevedorDeArquivos.WriteLine(contato.Telefone);
             escrevedorDeArquivos.WriteLine(contato.Email);
 
-            for (int i = 0; i < listaDeContatos.Length; i++) 
+            for (int i = 0; i < listaDeContatos.Length; i++)
             {
                 escrevedorDeArquivos.WriteLine(listaDeContatos.Length + 1);
-                escrevedorDeArquivos.WriteLine(contato.PrimeiroNome);
-                escrevedorDeArquivos.WriteLine(contato.Sobrenome);
-                escrevedorDeArquivos.WriteLine(contato.Telefone);
-                escrevedorDeArquivos.WriteLine(contato.Email);
+                escrevedorDeArquivos.WriteLine(listaDeContatos[i].PrimeiroNome);
+                escrevedorDeArquivos.WriteLine(listaDeContatos[i].Sobrenome);
+                escrevedorDeArquivos.WriteLine(listaDeContatos[i].Telefone);
+                escrevedorDeArquivos.WriteLine(listaDeContatos[i].Email);
+            }
+            escrevedorDeArquivos.Close();
+        }
+
+        private void Ler()
+        {
+            StreamReader leitorDeArquivos = new StreamReader("Contatos.txt");
+            listaDeContatos = new Contato[Convert.ToInt32(leitorDeArquivos.ReadLine())];
+            // Copia os dados do arquivo de texto para o vetor listaDeContatos
+            for (int i = 0; i < listaDeContatos.Length; i++)
+            {
+                listaDeContatos[i] = new Contato();
+                listaDeContatos[i].PrimeiroNome = leitorDeArquivos.ReadLine();
+                listaDeContatos[i].Sobrenome = leitorDeArquivos.ReadLine();
+                listaDeContatos[i].Telefone = leitorDeArquivos.ReadLine();
+                listaDeContatos[i].Email = leitorDeArquivos.ReadLine();
+            }
+            leitorDeArquivos.Close();
+        }
+
+        private void AtualizarDisplay()
+        {
+            lstContatos.Items.Clear();
+            for (int i = 0; i < listaDeContatos.Length; i++)
+            {
+                lstContatos.Items.Add(listaDeContatos[i].ToString());
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void LimparFormulario()
         {
-
+            txtNome.Text = string.Empty;
+            txtSobrenome.Text = string.Empty;
+            txtTelefone.Text = string.Empty;
+            txtEmail.Text = string.Empty;
         }
 
-        private void txtEmail_TextChanged(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+            Ler();
+            AtualizarDisplay();
         }
     }
 }
