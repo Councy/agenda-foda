@@ -90,5 +90,31 @@ namespace Lisinha_Matlugo
             Ler();
             AtualizarDisplay();
         }
+
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            Ordenar();
+            AtualizarDisplay();
+        }
+
+        private void Ordenar()
+        {
+            Contato temporario;
+            bool trocar = true;
+            do
+            {
+                trocar = false;
+                for (int i =0; i < (listaDeContatos.Length - 1); i++)
+                {
+                    if (listaDeContatos[i].PrimeiroNome.CompareTo(listaDeContatos[i + 1].PrimeiroNome) > 0)
+                    {
+                        temporario = listaDeContatos[i];
+                        listaDeContatos[i] = listaDeContatos[i + 1];
+                        listaDeContatos[i + 1] = temporario;
+                        trocar = true;
+                    }
+                }
+            } while(trocar == true);
+        }
     }
 }
